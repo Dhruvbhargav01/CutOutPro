@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Edu+QLD+Hand:wght@400..700&family=Libertinus+Math&family=Outfit:wght@100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+   font-family: outfit; 
+}
+
+/* 🔥 Apply dark purple theme to entire UI */
+#root {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #1e1b4b;   /* dark purple theme */
+    color: #f3f4f6;              /* light text */
+}
+
+/* Slider styling */
+.slider {
+    -webkit-appearance: none;
+    height: 100%;
+    background: transparent;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 30px;
+    min-height: 30px;
+    background-image: url(/slide_icon.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-layer {
+    background-image: url(/bg_layer.png);
+}
