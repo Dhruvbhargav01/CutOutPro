@@ -1,7 +1,9 @@
 # ✂️ CutOutPro  
 
 CutOutPro is a **SaaS-based Background Removal App** built with the **MERN Stack**, **Clerk Authentication**, **ClipDrop API**, and **Razorpay**.  
-Upload your images, remove backgrounds instantly, and manage usage with a simple credit system.  
+Upload your images, remove backgrounds instantly, and manage usage with a simple credit system.
+
+🔗 **Live Demo**: cut-out-pro-sri2.vercel.app
 
 ---
 
