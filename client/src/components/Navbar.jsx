@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { assets } from '../assets/assets'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useClerk, UserButton, useUser } from '@clerk/clerk-react'
+import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
 
   const { openSignIn } = useClerk();
   const { isSignedIn, user } = useUser();
+  const { credit, loadCreditsData } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      loadCreditsData()
+    }
+  }, [isSignedIn])
 
   return (
     <div className='flex items-center justify-between mx-4 py-3 lg:mx-44'>
@@ -16,7 +26,7 @@ const Navbar = () => {
             className="w-14 sm:w-16 drop-shadow-lg filter brightness-110"
             src={assets.logo_icon2}
             alt="CutOutPro Logo"
-          />
+          /> 
 
           <span
             className="relative -ml-2 translate-y-1 text-xl sm:text-2xl font-semibold italic text-gray-900"
@@ -30,7 +40,21 @@ const Navbar = () => {
       {
         isSignedIn
           ?
-          <div>
+          <div className='flex items-center gap-2 sm:gap-3'>
+            <button
+              onClick={()=>navigate('/buy')}
+              className='flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-1.5 rounded-full 
+               bg-gradient-to-r from-white via-black to-purple-800 
+               shadow-md hover:scale-105 transition-all duration-700'
+            >
+              <img className='w-5 sm:w-6' src={assets.credit_icon} alt="credits" />
+              <p className='text-xs sm:text-sm font-medium text-gray-100'>
+                Credits : {credit}
+              </p>
+            </button>
+            <p className='max-sm:hidden font-medium text-gray-200'>
+              Hi, {user.fullName}
+            </p>
             <UserButton />
           </div>
           :

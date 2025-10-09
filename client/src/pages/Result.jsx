@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { assets } from '../assets/assets'
+import { AppContext } from '../context/AppContext'
 
 const Result = () => {
+
+  const { resultImage, image } = useContext(AppContext);
+
+  // // Cleanup for URL.createObjectURL
+  // useEffect(() => {
+  //   return () => {
+  //     if (image) URL.revokeObjectURL(image);
+  //   };
+  // }, [image]);
+
+
   return (
     <div className='mx-4 my-3 lg:mx-44 min-h-[75vh]'>
 
@@ -13,31 +25,33 @@ const Result = () => {
           {/* -----Left side------ */}
           <div>
             <p className='font-semibold text-black mb-2'>Original</p>
-            <img className='rounded-md border border-gray-400' src={assets.image_w_bg} />
+            <img className='rounded-md border border-gray-400' src={image ? URL.createObjectURL(image) : ''} />
           </div>
 
           {/* ------Right side------- */}
           <div className='flex flex-col'>
             <p className='font-semibold text-gray-600 mb-2'>Background Removed</p>
             <div className='rounded-md border border-gray-300 h-full relative bg-layer overflow-hidden'>
-              {/* <img src={assets.image_wo_bg} /> */}
-              <div className='absolute right-1/2 bottom-1/2 transform translate-x-1/2 -translate-y-1/2'>
-                <div className='border-4 border-violet-600 rounded-full h-12 w-12 border-t-transparent animate-spin'></div>
-              </div>
+              <img src={resultImage ? resultImage : ''} />
+              {
+                !resultImage && image && <div className='absolute right-1/2 bottom-1/2 transform translate-x-1/2 -translate-y-1/2'>
+                  <div className='border-4 border-violet-600 rounded-full h-12 w-12 border-t-transparent animate-spin'></div>
+                </div>
+              }
             </div>
           </div>
 
         </div>
 
         {/* -------- Buttons ------- */}
-        <div className='flex justify-center sm:justify-end items-start flex-wrap gap-4 mt-6'>
+        {resultImage && <div className='flex justify-center sm:justify-end items-start flex-wrap gap-4 mt-6'>
           <button className='px-8 py-2.5 text-purple-600 text-sm border border-purple-600 rounded-full hover:scale-105 transition-all duration-700'>
             Try another image
           </button>
-          <a className='px-8 py-2.5 text-white text-sm bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 rounded-full hover:scale-105 transition-all duration-700' href=''>
+          <a href={resultImage} download className='px-8 py-2.5 text-white text-sm bg-gradient-to-r from-purple-600 via-purple-500 to-pink-500 rounded-full hover:scale-105 transition-all duration-700'>
             Download image
           </a>
-        </div>
+        </div>}
 
       </div>
 

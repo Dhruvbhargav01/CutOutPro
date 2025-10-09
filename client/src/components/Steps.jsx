@@ -17,7 +17,7 @@ const Steps = () => {
                     <div>
                         <p className='text-xl font-semibold text-white'>Upload image</p>
                         <p className='text-sm text-gray-300 mt-1'>
-                            This is a demo text, will replace it later.<br /> This is a demo...
+                            Select an image file from your device.<br /> Click on the "Upload" button.
                         </p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@ const Steps = () => {
                     <div>
                         <p className='text-xl font-semibold text-white'>Remove background</p>
                         <p className='text-sm text-gray-300 mt-1'>
-                            This is a demo text, will replace it later.<br /> This is a demo...
+                            The background will be removed automatically.<br />  Wait for processing to finish.
                         </p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const Steps = () => {
                     <div>
                         <p className='text-xl font-semibold text-white'>Download image</p>
                         <p className='text-sm text-gray-300 mt-1'>
-                            This is a demo text, will replace it later.<br /> This is a demo...
+                            The image will be shown with the background removed.<br /> Download the processed image.
                         </p>
                     </div>
                 </div>
